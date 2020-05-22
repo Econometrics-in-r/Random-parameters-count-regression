@@ -1,7 +1,7 @@
-# Transport data analysis with R
- R codes for statistical and econometrics models for transportation data analysis
+# Statistical data analysis with R
+R codes for statistical and econometrics models applied to transport data 
  
-This R code corresponds with the Random Parameters Negative Binomial (RPNB) count regression model. This model may be used for any dependent variable that is of count nature (e.g. crash counts, number of patients at a hospital, animal death counts, etc.).
+This R code corresponds with the Random Parameters Negative Binomial (RPNB) count regression model. Although this code has been written for crash count data, it may be used for any dependent variable that is of count nature (e.g. number of patients at hospitals, animal death counts, etc).
 
 Prior to running the code, make sure to have "maxLik" and "randtoolbox" packages installed. 
 
