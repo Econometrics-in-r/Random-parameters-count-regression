@@ -5,4 +5,4 @@ This R code corresponds with the Random Parameters Negative Binomial (RPNB) coun
 
 Prior to running the code, make sure to have "maxLik" and "randtoolbox" packages installed. 
 
-The code also includes two global goodness of fit measures (i.e. Mean Absolute Deviance and Mean Squared Predictive Error). Please note that these two measures are used a goodness of fit measures rather than predictive measures.
+The code also includes two global goodness of fit measures (i.e. Mean Absolute Deviance and Mean Squared Predictive Error). Please note that these two measures are used as goodness of fit measures rather than predictive measures.
