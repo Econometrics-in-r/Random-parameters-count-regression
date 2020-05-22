@@ -7,7 +7,7 @@ require(randtoolbox)
 dataset <- read.csv(file.choose(),header=T)
 #Sample Size
 N <- nrow(dataset) 
-#Dependent variable: crash counts
+#Dependent variable (crash counts in this example); change the variable as required
 DVar <- dataset$Crash 
 
 # Halton Draws 
@@ -63,7 +63,7 @@ draws1 = draws1[,1:dimensions]
 
 # Likelihood function
 LL <- function(params){  
-  disp <- params[1] # Dispersion Parameter
+  disp <- params[1] # Dispersion Parameter (comment out and adjust params[] for the Poisson model)
   Fbeta <- params[2:3] # Fixed parameters in the mean Function
   MRbeta <- params[4:5]  # Mean of Random parameters in the mean function
   SDRbeta <- params[6:7]  # Std of Random parameters in the mean function
@@ -76,12 +76,14 @@ LL <- function(params){
   mu <- exp(offset+rowSums(dataR2*beta))
   # simulated maximum loglikelihood for negative binomial distribution
   loglik <-  sum(log(rowMeans(matrix(dnbinom(Dvar2,size=disp,mu=mu,log = F), ncol = Ndraws))))
+  # simulated maximum loglikelihood for Poisson distribution
+  # loglik <-  sum(log(rowMeans(matrix(dpois(Dvar2,lambda=mu,log = F), ncol = Ndraws))))
   
   return(loglik)
 }
 
 # initial values for optimization
-init <- c(2,#dispersion parameter
+init <- c(2,#dispersion parameter(remove for the Poisson model)
           -5.5,0.66,#fixed parameters
           0.17,-0.14,#mean of random parameters
           0.05,0.08)#standard deviation of random parameters
@@ -115,5 +117,5 @@ MAD <- sum(ABSRES)/N
 # mean squared predictive error
 MSPE <- sum(SQRES)/N
 # goodness of fit
-GOF <- data.frame(MAD=MAD,MSPE=MSPE)
+GOF <- data.frame(MAD=MAD,MSPE=MSPE) 
   
